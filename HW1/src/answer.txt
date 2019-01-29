@@ -1,0 +1,4 @@
+I chose to add a counter to the while loop inside of the map function and wrote that to map.txt. 
+I created a static variable for the counter outside the map function in the TokenizerMapper function and made the counter 
+increase by one at the top of the map function that way anytime the map function was called the counter would increase. 
+The number that I got for the number of  times the map method was invoked was 258.
