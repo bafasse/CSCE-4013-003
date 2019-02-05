@@ -12,8 +12,6 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 import java.io.FileWriter;
-// import java.io.FileReader;
-// import java.io.BufferedReader;
 import java.io.PrintWriter;
 
 
@@ -23,29 +21,21 @@ public class WordCount {
 
     private final static IntWritable one = new IntWritable(1);
     private Text word = new Text();
-    public static int wordCount = 0;
     public static int mapCount = 0;
 
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
       
       // mapCount++;
-      PrintWriter wordWriter = new PrintWriter(new FileWriter("words.txt", false));
       PrintWriter mapWriter = new PrintWriter(new FileWriter("map.txt", false));
       mapCount++;
       StringTokenizer itr = new StringTokenizer(value.toString());
 
       while (itr.hasMoreTokens()) {
-        wordCount++;
         word.set(itr.nextToken());
         context.write(word, one);
       }
-      wordWriter.print(wordCount);
       mapWriter.print(mapCount);
-      
-      wordWriter.close();
       mapWriter.close();
-
-      System.out.println("The number of words is " + wordCount);
       System.out.println("The number of maps is " + mapCount);
     }
   }

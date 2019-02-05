@@ -1,0 +1,4 @@
+The way I decided to go about finding the bigram count was I reworked the while loop inside the map fucntion to look for 
+pairs of words instead of single words and put the counter from the solutions inside the while loop. I took the same 
+approach to finding the map tasks but placed the counter outside the while loop. I got 9386 for the bigram count and 318 
+for the map tasks
