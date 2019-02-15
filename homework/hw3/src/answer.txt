@@ -1,0 +1,3 @@
+I was not able to finish this assignment the way that was assigned. At first I didnt understand that this needed to be based on wordpair.java and I found a way
+to do it with some help online but it wasnt a Text class. Some of my short comings were I tried modify the if statements in the compareTo() function but I 
+can't seem to get the program to compile because I dont understand how to compare two Text variables

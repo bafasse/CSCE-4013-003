@@ -1,0 +1,4 @@
+javac *.java
+jar -cvf WordCount.jar ./*.class
+rm -rf output
+hadoop jar WordCount.jar WordCount input output
