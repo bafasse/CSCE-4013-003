@@ -1,0 +1,15 @@
+javac *.java
+jar -cvf RelativeFreq1.jar ./*.class
+rm -rf output
+hadoop jar RelativeFreq1.jar RelativeFreq1 input output
+
+
+javac *.java
+jar -cvf RelativeFreq2.jar ./*.class
+rm -rf output
+hadoop jar RelativeFreq2.jar RelativeFreq2 input output
+
+
+
+
+
