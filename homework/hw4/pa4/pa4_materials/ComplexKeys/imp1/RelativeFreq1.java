@@ -15,7 +15,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
 
 public class RelativeFreq1
 {
-      public  static class PairsOccurrenceMapper extends Mapper<LongWritable, Text, WordPair1, IntWritable>
+      public static class PairsOccurrenceMapper extends Mapper<LongWritable, Text, WordPair1, IntWritable>
       {
           private WordPair1 wordPair = new WordPair1();
           private IntWritable ONE = new IntWritable(1);

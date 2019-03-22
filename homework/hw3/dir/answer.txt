@@ -1,0 +1,4 @@
+Alot of this code came from the Hadoop reference book from Blackboard. In the initial compare function, the reason 
+why the return value is multiplied by -1 is because thats how the word order gets flipped. The second compare 
+function is where actually get compared using Hadoop data types. The return value is getting multiple by -1 is for 
+the same reason as the original compare
