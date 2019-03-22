@@ -1,0 +1,8 @@
+javac *.java
+jar -cvf InvertedIndex.jar ./*.class
+rm -rf output
+hadoop jar InvertedIndex.jar InvertedIndex input output
+
+
+
+
