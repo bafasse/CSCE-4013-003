@@ -1,0 +1,3 @@
+How to reverse output of reducer class?
+
+In order to save the result in reverse order, create a new class in which override the compareTo() method so that it reverses the comparison condition. For eg. if compareTo() method returns positive value when A>B then it will return negative value when A>B. In this way instead of getting the output in ascending order, we will get it in descending order.

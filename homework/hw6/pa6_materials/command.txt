@@ -1,0 +1,7 @@
+javac *.java
+
+jar -cvf GraphSearch.jar ./*.class
+
+rm -r output-graph*
+
+hadoop jar GraphSearch.jar GraphSearch -m 3 -r 3 -i 10

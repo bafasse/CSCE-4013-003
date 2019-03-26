@@ -1,0 +1,23 @@
+(1) explain how to count bigrams and figure out how many map tasks are launched in the
+map stage, and 
+
+Answer:
+ 
+Count bigrams:
+For each line in input files, the first word is assigned to a string S1 if it is not empty. 
+while (this line has more words) 
+	the next word is assigned to a string S2.
+	The string S3 stores the bigram (pairs of consecutive words) and emits a pair (S3, 1) as a map result.
+	S1=S2      
+endWhile
+
+
+Count map tasks:
+I define a string named "zz Total Counts of Mapper Task" in cleanup function. If a map stask is launched in map stage, output pair ("zz Total Counts of Mapper Task",1)  emits. The final output of the "zz Total Counts of Mapper Task" is the number of launched map tasks.
+
+My results are as follows:
+zz Total Counts of Mapper Task	3
+
+(2) provide your solution given your input
+
+Answer: The map tasks are launched 3 times.
