@@ -22,8 +22,9 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+// import org.apache.commons.logging.Log;
+// import org.apache.commons.logging.LogFactory;
+// import org.apache.commons.logging.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -33,6 +34,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
+import java.lang.NoClassDefFoundError;
+
 
 /**
  * This is an example Hadoop Map/Reduce application. 
@@ -51,7 +54,7 @@ import org.apache.hadoop.util.ToolRunner;
  */
 public class GraphSearch extends Configured implements Tool {
 
-  public static final Log LOG = LogFactory.getLog("org.apache.hadoop.examples.GraphSearch");
+  // public static final Log LOG = LogFactory.getLog("org.apache.hadoop.examples.GraphSearch");
 
   /**
    * Nodes that are Color.WHITE or Color.BLACK are emitted, as is. For every
@@ -64,9 +67,11 @@ public class GraphSearch extends Configured implements Tool {
     public void map(LongWritable key, Text value, OutputCollector<IntWritable, Text> output,
         Reporter reporter) throws IOException {
 
-      LOG.info("Map executing for key [" + key.toString() + "] and value [" + value.toString()
-          + "]");
+      // LOG.info("Map executing for key [" + key.toString() + "] and value [" + value.toString()
+      //     + "]");
 
+      System.out.println("Map executing for key [" + key.toString() + "] and value [" + value.toString()
+          + "]");
       Node node = new Node(value.toString());
 
       // For each GRAY node, emit each of the edges as a new node (also GRAY)
@@ -85,7 +90,8 @@ public class GraphSearch extends Configured implements Tool {
       // If the node came into this method GRAY, it will be output as BLACK
       output.collect(new IntWritable(node.getId()), node.getLine());
 
-      LOG.info("Map outputting for key[" + node.getId() + "] and value [" + node.getLine() + "]");
+      // LOG.info("Map outputting for key[" + node.getId() + "] and value [" + node.getLine() + "]");
+      System.out.println("Map outputting for key[" + node.getId() + "] and value [" + node.getLine() + "]");
 
     }
   }
@@ -105,7 +111,8 @@ public class GraphSearch extends Configured implements Tool {
      */
     public void reduce(IntWritable key, Iterator<Text> values,
         OutputCollector<IntWritable, Text> output, Reporter reporter) throws IOException {
-      LOG.info("Reduce executing for input key [" + key.toString() + "]");
+      // LOG.info("Reduce executing for input key [" + key.toString() + "]");
+      System.out.println("Reduce executing for input key [" + key.toString() + "]");
 
       List<Integer> edges = null;
       int distance = Integer.MAX_VALUE;
@@ -139,7 +146,8 @@ public class GraphSearch extends Configured implements Tool {
       n.setEdges(edges);
       n.setColor(color);
       output.collect(key, new Text(n.getLine()));
-      LOG.info("Reduce outputting final key [" + key + "] and value [" + n.getLine() + "]");
+      // LOG.info("Reduce outputting final key [" + key + "] and value [" + n.getLine() + "]");
+      System.out.println("Reduce outputting final key [" + key + "] and value [" + n.getLine() + "]");
     }
   }
 
@@ -169,8 +177,12 @@ public class GraphSearch extends Configured implements Tool {
       }
     }
 
-    LOG.info("The number of reduce tasks has been set to " + conf.getNumReduceTasks());
-    LOG.info("The number of mapper tasks has been set to " + conf.getNumMapTasks());
+    // LOG.info("The number of reduce tasks has been set to " + conf.getNumReduceTasks());
+    // LOG.info("The number of mapper tasks has been set to " + conf.getNumMapTasks());
+
+    System.out.println("The number of reduce tasks has been set to " + conf.getNumReduceTasks());
+    System.out.println("The number of mapper tasks has been set to " + conf.getNumMapTasks());
+
 
     return conf;
   }
@@ -215,7 +227,7 @@ public class GraphSearch extends Configured implements Tool {
     return true;
   }
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) throws Exception, NoClassDefFoundError {
     int res = ToolRunner.run(new Configuration(), new GraphSearch(), args);
     System.exit(res);
   }
