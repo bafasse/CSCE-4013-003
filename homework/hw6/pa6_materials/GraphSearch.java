@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.apache.hadoop.examples;
+// package org.apache.hadoop.examples;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -80,6 +80,20 @@ public class GraphSearch extends Configured implements Tool {
           Node vnode = new Node(v);
           vnode.setDistance(node.getDistance() + 1);
           vnode.setColor(Node.Color.GRAY);
+          vnode.setWeights(node.getWeights());
+
+          if (node.getWeights().size() > 0) {
+            System.out.println("TRUE");
+            vnode.setWeights(node.getWeights());
+          }
+          else {
+            System.out.println("Less than 0");
+
+          }
+
+          if (node.getWeights().isEmpty()) {
+            System.out.println("Why are you Empty");
+          }
           output.collect(new IntWritable(vnode.getId()), vnode.getLine());
         }
         // We're done with this node now, color it BLACK
@@ -115,6 +129,7 @@ public class GraphSearch extends Configured implements Tool {
       System.out.println("Reduce executing for input key [" + key.toString() + "]");
 
       List<Integer> edges = null;
+      List<Integer> weights = null;
       int distance = Integer.MAX_VALUE;
       Node.Color color = Node.Color.WHITE;
 
@@ -127,6 +142,10 @@ public class GraphSearch extends Configured implements Tool {
         // version, which includes the edges
         if (u.getEdges().size() > 0) {
           edges = u.getEdges();
+        }
+
+        if (u.getWeights().size() >= 0) {
+          weights = u.getWeights();
         }
 
         // Save the minimum distance
@@ -142,6 +161,7 @@ public class GraphSearch extends Configured implements Tool {
       }
 
       Node n = new Node(key.get());
+      n.setWeights(weights);
       n.setDistance(distance);
       n.setEdges(edges);
       n.setColor(color);
