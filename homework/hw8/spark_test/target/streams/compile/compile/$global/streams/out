@@ -1,4 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/bafasse/git/cloud_computing/homework/hw8/spark_test/src/main/scala/SimpleApp.scala:39:7: value saveAsTextFile is not a member of Array[(String, Double)][0m
+[0m[[0m[31merror[0m] [0m[0m/home/bafasse/git/cloud_computing/homework/hw8/spark_test/src/main/scala/SimpleApp.scala:21:7: value saveAsTextFile is not a member of Array[(String, Double)][0m
 [0m[[0m[31merror[0m] [0m[0m		rdd.saveAsTextFile("output")[0m
 [0m[[0m[31merror[0m] [0m[0m		    ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m
